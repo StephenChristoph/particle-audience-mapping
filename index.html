@@ -1,129 +1,264 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Particle Audience Mapping</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.22.20/babel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-    <style>
-        .funnel-section {
-            transition: all 0.3s ease;
-        }
-        .matrix-cell {
-            min-width: 250px;
-        }
-        body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        }
-        .tab-active {
-            color: #2563eb;
-            border-bottom: 2px solid #2563eb;
-        }
-    </style>
-</head>
-<body>
-    <div id="root"></div>
+const AudienceMapping = () => {
+  const [activeView, setActiveView] = useState('funnel');
 
-    <script type="text/babel">
-        const AudienceMapping = () => {
-            const [activeView, setActiveView] = React.useState('funnel');
-            
-            const funnelData = [
-                {
-                    level: "Top of Funnel",
-                    description: "Early adopters with highest potential for immediate activation",
-                    width: "w-full",
-                    segments: [
-                        {
-                            title: "AI Enthusiasts",
-                            description: "Tech-forward early adopters",
-                            behaviors: "Actively seek new AI tools, high feature exploration",
-                            usage: "Power Users",
-                            features: [
-                                "Complete stories from followed KGEs",
-                                "Opposite sides summaries",
-                                "Audio summaries",
-                                "External links exploration"
-                            ]
-                        },
-                        {
-                            title: "Forward-Thinking News Consumers",
-                            description: "Seeking efficient news consumption",
-                            behaviors: "Regular engagement with core features",
-                            usage: "Core/Power Users",
-                            features: [
-                                "KGE following",
-                                "Multiple summary styles",
-                                "Opposite sides feature",
-                                "Audio versions"
-                            ]
-                        }
-                    ]
-                },
-                // ... [shortened for clarity - the middle and bottom funnel data would go here]
-            ];
+  const funnelData = [
+    {
+      level: "Top of Funnel",
+      description: "Early adopters with highest potential for immediate activation",
+      rationale: "Placed here due to natural alignment with product value and lowest barriers to adoption",
+      width: "w-full",
+      segments: [
+        {
+          title: "AI Enthusiasts",
+          description: "Tech-forward early adopters",
+          behaviors: "Actively seek new AI tools, high feature exploration",
+          usage: "Power Users",
+          features: [
+            "Complete stories from followed KGEs",
+            "Opposite sides summaries",
+            "Audio summaries",
+            "External links exploration"
+          ]
+        },
+        {
+          title: "Forward-Thinking News Consumers",
+          description: "Seeking efficient news consumption",
+          behaviors: "Regular engagement with core features",
+          usage: "Core/Power Users",
+          features: [
+            "KGE following",
+            "Multiple summary styles",
+            "Opposite sides feature",
+            "Audio versions"
+          ]
+        }
+      ]
+    },
+    {
+      level: "Middle of Funnel",
+      description: "Interested users requiring more education and trust-building",
+      rationale: "Need more touchpoints before full adoption but show clear interest",
+      width: "w-4/5",
+      segments: [
+        {
+          title: "Core News Readers",
+          description: "Value balanced perspectives",
+          behaviors: "Consistent engagement with specific features",
+          usage: "Core Users",
+          features: [
+            "Specific AI summary styles",
+            "Explain Like I'm 5 summaries",
+            "Opposite sides for complex topics"
+          ]
+        },
+        {
+          title: "Tech-Curious Users",
+          description: "Interested but cautious",
+          behaviors: "Testing basic features",
+          usage: "New/Casual Users",
+          features: [
+            "Basic summary styles",
+            "KGE exploration",
+            "Story completion"
+          ]
+        }
+      ]
+    },
+    {
+      level: "Bottom of Funnel",
+      description: "Requires significant trust-building and education",
+      rationale: "Highest barriers to adoption but important for long-term growth",
+      width: "w-3/5",
+      segments: [
+        {
+          title: "Cautious Consumers",
+          description: "Need trust-building",
+          behaviors: "Limited, passive engagement",
+          usage: "Casual Users",
+          features: [
+            "Complete story scrolls",
+            "Visual content consumption",
+            "Basic summaries"
+          ]
+        }
+      ]
+    }
+  ];
 
-            return (
-                <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-lg p-6 m-4">
-                    <h1 className="text-2xl font-bold mb-6 text-center">Particle Audience Mapping</h1>
-                    
-                    <div className="flex mb-6 border-b">
-                        <button 
-                            onClick={() => setActiveView('funnel')}
-                            className={`px-4 py-2 font-medium ${activeView === 'funnel' ? 'tab-active' : 'text-gray-500'}`}
-                        >
-                            Funnel View
-                        </button>
-                        <button 
-                            onClick={() => setActiveView('matrix')}
-                            className={`px-4 py-2 font-medium ${activeView === 'matrix' ? 'tab-active' : 'text-gray-500'}`}
-                        >
-                            Matrix View
-                        </button>
-                    </div>
+  const matrixData = {
+    columns: ["Low Tech Adoption", "Medium Tech Adoption", "High Tech Adoption"],
+    rows: ["High News Interest", "Medium News Interest", "Low News Interest"],
+    cells: [
+      [
+        { 
+          type: "Cautious News Enthusiast", 
+          segment: "Core Users", 
+          focus: "Trust-building",
+          features: ["Basic summaries", "Visual content", "Single KGE following"]
+        },
+        { 
+          type: "Regular News Reader", 
+          segment: "Core Users", 
+          focus: "Feature education",
+          features: ["AI summary styles", "Opposite sides", "Story completion"]
+        },
+        { 
+          type: "Tech-First News Consumer", 
+          segment: "Power Users", 
+          focus: "Deep engagement",
+          features: ["Multiple KGEs", "Audio summaries", "External links"]
+        }
+      ],
+      [
+        { 
+          type: "Traditional Reader", 
+          segment: "Casual Users", 
+          focus: "Value demonstration",
+          features: ["Story scrolls", "Visual content", "Basic summaries"]
+        },
+        { 
+          type: "Balanced Consumer", 
+          segment: "Core Users", 
+          focus: "Feature adoption",
+          features: ["Summary styles", "KGE following", "Story completion"]
+        },
+        { 
+          type: "AI Enthusiast", 
+          segment: "Power Users", 
+          focus: "Feature exploration",
+          features: ["All AI features", "Multiple KGEs", "Audio versions"]
+        }
+      ],
+      [
+        { 
+          type: "Skeptical Browser", 
+          segment: "Casual Users", 
+          focus: "Basic engagement",
+          features: ["Story scrolls", "Visual content"]
+        },
+        { 
+          type: "Occasional Reader", 
+          segment: "Casual Users", 
+          focus: "Habit building",
+          features: ["Basic summaries", "Single KGE following"]
+        },
+        { 
+          type: "Tech Explorer", 
+          segment: "New Users", 
+          focus: "Onboarding",
+          features: ["KGE selection", "Basic feature exploration"]
+        }
+      ]
+    ]
+  };
 
-                    {activeView === 'funnel' && (
-                        <div className="space-y-6">
-                            {funnelData.map((level, idx) => (
-                                <div key={idx} className={`relative ${level.width} mx-auto`}>
-                                    <div className="bg-gradient-to-b from-blue-50 to-blue-100 p-6 rounded-lg border border-blue-200">
-                                        <h2 className="text-xl font-bold text-blue-800 mb-2">{level.level}</h2>
-                                        <p className="text-gray-600 mb-4">{level.description}</p>
-                                        <div className="grid md:grid-cols-2 gap-4">
-                                            {level.segments.map((segment, segIdx) => (
-                                                <div key={segIdx} className="bg-white p-4 rounded shadow">
-                                                    <h3 className="font-semibold text-blue-600">{segment.title}</h3>
-                                                    <p className="text-sm text-gray-600">{segment.description}</p>
-                                                    <div className="mt-2">
-                                                        <h4 className="font-medium text-sm">Key Features:</h4>
-                                                        <ul className="list-disc list-inside text-sm text-gray-600">
-                                                            {segment.features.map((feature, fidx) => (
-                                                                <li key={fidx}>{feature}</li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
+  return (
+    <Card className="w-full max-w-4xl">
+      <CardHeader>
+        <CardTitle>Particle Audience Mapping</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="flex space-x-4 mb-6">
+          <button 
+            onClick={() => setActiveView('funnel')} 
+            className={`px-4 py-2 rounded ${activeView === 'funnel' ? 'bg-blue-100 text-blue-700' : 'text-gray-600'}`}
+          >
+            Funnel View
+          </button>
+          <button 
+            onClick={() => setActiveView('matrix')} 
+            className={`px-4 py-2 rounded ${activeView === 'matrix' ? 'bg-blue-100 text-blue-700' : 'text-gray-600'}`}
+          >
+            Matrix View
+          </button>
+        </div>
+
+        {activeView === 'funnel' && (
+          <div className="space-y-6">
+            {funnelData.map((level, idx) => (
+              <div key={idx} className="relative flex justify-center">
+                <div className={`${level.width} bg-gradient-to-b from-blue-50 to-blue-100 p-6 rounded-lg border border-blue-200`}>
+                  <div className="mb-4">
+                    <h3 className="font-bold text-lg text-blue-800">{level.level}</h3>
+                    <p className="text-sm text-gray-600">{level.description}</p>
+                    <p className="text-sm text-gray-500 italic">{level.rationale}</p>
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {level.segments.map((segment, segIdx) => (
+                      <div key={segIdx} className="bg-white p-4 rounded-lg shadow">
+                        <h4 className="font-semibold text-blue-600">{segment.title}</h4>
+                        <p className="text-sm text-gray-600">{segment.description}</p>
+                        <p className="text-sm mt-2">
+                          <span className="font-medium">Behaviors:</span> {segment.behaviors}
+                        </p>
+                        <p className="text-sm mt-1">
+                          <span className="font-medium">Usage Type:</span> {segment.usage}
+                        </p>
+                        <div className="mt-2">
+                          <h4 className="font-medium text-sm">Key Features:</h4>
+                          <ul className="list-disc list-inside text-sm text-gray-600">
+                            {segment.features.map((feature, fidx) => (
+                              <li key={fidx}>{feature}</li>
                             ))}
+                          </ul>
                         </div>
-                    )}
-
-                    {activeView === 'matrix' && (
-                        <div>Matrix View Content Here</div>
-                    )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-            );
-        };
+              </div>
+            ))}
+          </div>
+        )}
 
-        ReactDOM.render(<AudienceMapping />, document.getElementById('root'));
-    </script>
-</body>
-</html>
+        {activeView === 'matrix' && (
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr>
+                  <th className="p-2 border"></th>
+                  {matrixData.columns.map((col, idx) => (
+                    <th key={idx} className="p-2 border bg-blue-50 font-semibold">
+                      {col}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {matrixData.rows.map((row, rowIdx) => (
+                  <tr key={rowIdx}>
+                    <th className="p-2 border bg-blue-50 font-semibold">
+                      {row}
+                    </th>
+                    {matrixData.cells[rowIdx].map((cell, cellIdx) => (
+                      <td key={cellIdx} className="p-2 border">
+                        <div className="space-y-2">
+                          <p className="font-medium text-blue-600">{cell.type}</p>
+                          <p className="text-sm text-gray-600">{cell.segment}</p>
+                          <p className="text-sm text-gray-500">Focus: {cell.focus}</p>
+                          <div className="text-sm">
+                            <span className="font-medium">Features:</span>
+                            <ul className="list-disc list-inside mt-1 text-gray-600">
+                              {cell.features.map((feature, fidx) => (
+                                <li key={fidx}>{feature}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+};
+
+export default AudienceMapping;
