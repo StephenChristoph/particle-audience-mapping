@@ -1,264 +1,412 @@
-import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Particle Audience Mapping</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
 
-const AudienceMapping = () => {
-  const [activeView, setActiveView] = useState('funnel');
+        h1 {
+            color: #1a1a1a;
+            font-size: 24px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
 
-  const funnelData = [
-    {
-      level: "Top of Funnel",
-      description: "Early adopters with highest potential for immediate activation",
-      rationale: "Placed here due to natural alignment with product value and lowest barriers to adoption",
-      width: "w-full",
-      segments: [
-        {
-          title: "AI Enthusiasts",
-          description: "Tech-forward early adopters",
-          behaviors: "Actively seek new AI tools, high feature exploration",
-          usage: "Power Users",
-          features: [
-            "Complete stories from followed KGEs",
-            "Opposite sides summaries",
-            "Audio summaries",
-            "External links exploration"
-          ]
-        },
-        {
-          title: "Forward-Thinking News Consumers",
-          description: "Seeking efficient news consumption",
-          behaviors: "Regular engagement with core features",
-          usage: "Core/Power Users",
-          features: [
-            "KGE following",
-            "Multiple summary styles",
-            "Opposite sides feature",
-            "Audio versions"
-          ]
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 12px;
         }
-      ]
-    },
-    {
-      level: "Middle of Funnel",
-      description: "Interested users requiring more education and trust-building",
-      rationale: "Need more touchpoints before full adoption but show clear interest",
-      width: "w-4/5",
-      segments: [
-        {
-          title: "Core News Readers",
-          description: "Value balanced perspectives",
-          behaviors: "Consistent engagement with specific features",
-          usage: "Core Users",
-          features: [
-            "Specific AI summary styles",
-            "Explain Like I'm 5 summaries",
-            "Opposite sides for complex topics"
-          ]
-        },
-        {
-          title: "Tech-Curious Users",
-          description: "Interested but cautious",
-          behaviors: "Testing basic features",
-          usage: "New/Casual Users",
-          features: [
-            "Basic summary styles",
-            "KGE exploration",
-            "Story completion"
-          ]
-        }
-      ]
-    },
-    {
-      level: "Bottom of Funnel",
-      description: "Requires significant trust-building and education",
-      rationale: "Highest barriers to adoption but important for long-term growth",
-      width: "w-3/5",
-      segments: [
-        {
-          title: "Cautious Consumers",
-          description: "Need trust-building",
-          behaviors: "Limited, passive engagement",
-          usage: "Casual Users",
-          features: [
-            "Complete story scrolls",
-            "Visual content consumption",
-            "Basic summaries"
-          ]
-        }
-      ]
-    }
-  ];
 
-  const matrixData = {
-    columns: ["Low Tech Adoption", "Medium Tech Adoption", "High Tech Adoption"],
-    rows: ["High News Interest", "Medium News Interest", "Low News Interest"],
-    cells: [
-      [
-        { 
-          type: "Cautious News Enthusiast", 
-          segment: "Core Users", 
-          focus: "Trust-building",
-          features: ["Basic summaries", "Visual content", "Single KGE following"]
-        },
-        { 
-          type: "Regular News Reader", 
-          segment: "Core Users", 
-          focus: "Feature education",
-          features: ["AI summary styles", "Opposite sides", "Story completion"]
-        },
-        { 
-          type: "Tech-First News Consumer", 
-          segment: "Power Users", 
-          focus: "Deep engagement",
-          features: ["Multiple KGEs", "Audio summaries", "External links"]
+        .tab-button {
+            padding: 8px 16px;
+            border: none;
+            background: none;
+            font-size: 16px;
+            cursor: pointer;
+            color: #6b7280;
+            border-radius: 6px;
+            transition: all 0.2s;
         }
-      ],
-      [
-        { 
-          type: "Traditional Reader", 
-          segment: "Casual Users", 
-          focus: "Value demonstration",
-          features: ["Story scrolls", "Visual content", "Basic summaries"]
-        },
-        { 
-          type: "Balanced Consumer", 
-          segment: "Core Users", 
-          focus: "Feature adoption",
-          features: ["Summary styles", "KGE following", "Story completion"]
-        },
-        { 
-          type: "AI Enthusiast", 
-          segment: "Power Users", 
-          focus: "Feature exploration",
-          features: ["All AI features", "Multiple KGEs", "Audio versions"]
-        }
-      ],
-      [
-        { 
-          type: "Skeptical Browser", 
-          segment: "Casual Users", 
-          focus: "Basic engagement",
-          features: ["Story scrolls", "Visual content"]
-        },
-        { 
-          type: "Occasional Reader", 
-          segment: "Casual Users", 
-          focus: "Habit building",
-          features: ["Basic summaries", "Single KGE following"]
-        },
-        { 
-          type: "Tech Explorer", 
-          segment: "New Users", 
-          focus: "Onboarding",
-          features: ["KGE selection", "Basic feature exploration"]
-        }
-      ]
-    ]
-  };
 
-  return (
-    <Card className="w-full max-w-4xl">
-      <CardHeader>
-        <CardTitle>Particle Audience Mapping</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="flex space-x-4 mb-6">
-          <button 
-            onClick={() => setActiveView('funnel')} 
-            className={`px-4 py-2 rounded ${activeView === 'funnel' ? 'bg-blue-100 text-blue-700' : 'text-gray-600'}`}
-          >
-            Funnel View
-          </button>
-          <button 
-            onClick={() => setActiveView('matrix')} 
-            className={`px-4 py-2 rounded ${activeView === 'matrix' ? 'bg-blue-100 text-blue-700' : 'text-gray-600'}`}
-          >
-            Matrix View
-          </button>
+        .tab-button:hover {
+            background: #f3f4f6;
+        }
+
+        .tab-button.active {
+            background: #e0e7ff;
+            color: #4338ca;
+            font-weight: 500;
+        }
+
+        .view-content {
+            display: none;
+        }
+
+        .view-content.active {
+            display: block;
+        }
+
+        .funnel-section {
+            margin-bottom: 32px;
+            background: linear-gradient(to bottom, #f3f4f6, #e5e7eb);
+            border-radius: 8px;
+            padding: 24px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .funnel-section.top { width: 100%; }
+        .funnel-section.middle { width: 90%; margin-left: auto; margin-right: auto; }
+        .funnel-section.bottom { width: 80%; margin-left: auto; margin-right: auto; }
+
+        .section-title {
+            color: #1e40af;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .section-description {
+            color: #4b5563;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .segments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .segment-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .segment-title {
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .segment-description {
+            color: #4b5563;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .features-list {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: #4b5563;
+            font-size: 14px;
+        }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .matrix-table th,
+        .matrix-table td {
+            border: 1px solid #e5e7eb;
+            padding: 16px;
+            text-align: left;
+        }
+
+        .matrix-table th {
+            background: #f3f4f6;
+            font-weight: 600;
+            color: #1e40af;
+        }
+
+        .matrix-table td {
+            vertical-align: top;
+            background: white;
+        }
+
+        .cell-type {
+            color: #2563eb;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .cell-segment {
+            color: #4b5563;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .cell-features {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #4b5563;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+            
+            .segments-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .matrix-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Particle Audience Mapping</h1>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="switchView('funnel')">Funnel View</button>
+            <button class="tab-button" onclick="switchView('matrix')">Matrix View</button>
         </div>
 
-        {activeView === 'funnel' && (
-          <div className="space-y-6">
-            {funnelData.map((level, idx) => (
-              <div key={idx} className="relative flex justify-center">
-                <div className={`${level.width} bg-gradient-to-b from-blue-50 to-blue-100 p-6 rounded-lg border border-blue-200`}>
-                  <div className="mb-4">
-                    <h3 className="font-bold text-lg text-blue-800">{level.level}</h3>
-                    <p className="text-sm text-gray-600">{level.description}</p>
-                    <p className="text-sm text-gray-500 italic">{level.rationale}</p>
-                  </div>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    {level.segments.map((segment, segIdx) => (
-                      <div key={segIdx} className="bg-white p-4 rounded-lg shadow">
-                        <h4 className="font-semibold text-blue-600">{segment.title}</h4>
-                        <p className="text-sm text-gray-600">{segment.description}</p>
-                        <p className="text-sm mt-2">
-                          <span className="font-medium">Behaviors:</span> {segment.behaviors}
-                        </p>
-                        <p className="text-sm mt-1">
-                          <span className="font-medium">Usage Type:</span> {segment.usage}
-                        </p>
-                        <div className="mt-2">
-                          <h4 className="font-medium text-sm">Key Features:</h4>
-                          <ul className="list-disc list-inside text-sm text-gray-600">
-                            {segment.features.map((feature, fidx) => (
-                              <li key={fidx}>{feature}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+        <div id="funnel-view" class="view-content active">
+            <!-- Top of Funnel -->
+            <div class="funnel-section top">
+                <div class="section-title">Top of Funnel</div>
+                <div class="section-description">Early adopters with highest potential for immediate activation</div>
+                <div class="segments-grid">
+                    <div class="segment-card">
+                        <div class="segment-title">AI Enthusiasts</div>
+                        <div class="segment-description">Tech-forward early adopters</div>
+                        <div class="features-title">Key Features:</div>
+                        <ul class="features-list">
+                            <li>Complete stories from followed KGEs</li>
+                            <li>Opposite sides summaries</li>
+                            <li>Audio summaries</li>
+                            <li>External links exploration</li>
+                        </ul>
+                    </div>
+                    <div class="segment-card">
+                        <div class="segment-title">Forward-Thinking News Consumers</div>
+                        <div class="segment-description">Seeking efficient news consumption</div>
+                        <div class="features-title">Key Features:</div>
+                        <ul class="features-list">
+                            <li>KGE following</li>
+                            <li>Multiple summary styles</li>
+                            <li>Opposite sides feature</li>
+                            <li>Audio versions</li>
+                        </ul>
+                    </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        )}
+            </div>
 
-        {activeView === 'matrix' && (
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
+            <!-- Middle of Funnel -->
+            <div class="funnel-section middle">
+                <div class="section-title">Middle of Funnel</div>
+                <div class="section-description">Interested users requiring more education and trust-building</div>
+                <div class="segments-grid">
+                    <div class="segment-card">
+                        <div class="segment-title">Core News Readers</div>
+                        <div class="segment-description">Value balanced perspectives</div>
+                        <div class="features-title">Key Features:</div>
+                        <ul class="features-list">
+                            <li>Specific AI summary styles</li>
+                            <li>Explain Like I'm 5 summaries</li>
+                            <li>Opposite sides for complex topics</li>
+                        </ul>
+                    </div>
+                    <div class="segment-card">
+                        <div class="segment-title">Tech-Curious Users</div>
+                        <div class="segment-description">Interested but cautious</div>
+                        <div class="features-title">Key Features:</div>
+                        <ul class="features-list">
+                            <li>Basic summary styles</li>
+                            <li>KGE exploration</li>
+                            <li>Story completion</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom of Funnel -->
+            <div class="funnel-section bottom">
+                <div class="section-title">Bottom of Funnel</div>
+                <div class="section-description">Requires significant trust-building and education</div>
+                <div class="segments-grid">
+                    <div class="segment-card">
+                        <div class="segment-title">Cautious Consumers</div>
+                        <div class="segment-description">Need trust-building</div>
+                        <div class="features-title">Key Features:</div>
+                        <ul class="features-list">
+                            <li>Complete story scrolls</li>
+                            <li>Visual content consumption</li>
+                            <li>Basic summaries</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="matrix-view" class="view-content">
+            <table class="matrix-table">
                 <tr>
-                  <th className="p-2 border"></th>
-                  {matrixData.columns.map((col, idx) => (
-                    <th key={idx} className="p-2 border bg-blue-50 font-semibold">
-                      {col}
-                    </th>
-                  ))}
+                    <th></th>
+                    <th>Low Tech Adoption</th>
+                    <th>Medium Tech Adoption</th>
+                    <th>High Tech Adoption</th>
                 </tr>
-              </thead>
-              <tbody>
-                {matrixData.rows.map((row, rowIdx) => (
-                  <tr key={rowIdx}>
-                    <th className="p-2 border bg-blue-50 font-semibold">
-                      {row}
-                    </th>
-                    {matrixData.cells[rowIdx].map((cell, cellIdx) => (
-                      <td key={cellIdx} className="p-2 border">
-                        <div className="space-y-2">
-                          <p className="font-medium text-blue-600">{cell.type}</p>
-                          <p className="text-sm text-gray-600">{cell.segment}</p>
-                          <p className="text-sm text-gray-500">Focus: {cell.focus}</p>
-                          <div className="text-sm">
-                            <span className="font-medium">Features:</span>
-                            <ul className="list-disc list-inside mt-1 text-gray-600">
-                              {cell.features.map((feature, fidx) => (
-                                <li key={fidx}>{feature}</li>
-                              ))}
+                <tr>
+                    <th>High News Interest</th>
+                    <td>
+                        <div class="cell-type">Cautious News Enthusiast</div>
+                        <div class="cell-segment">Core Users</div>
+                        <div class="cell-features">
+                            Features:
+                            <ul class="features-list">
+                                <li>Basic summaries</li>
+                                <li>Visual content</li>
+                                <li>Single KGE following</li>
                             </ul>
-                          </div>
                         </div>
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
+                    </td>
+                    <td>
+                        <div class="cell-type">Regular News Reader</div>
+                        <div class="cell-segment">Core Users</div>
+                        <div class="cell-features">
+                            Features:
+                            <ul class="features-list">
+                                <li>AI summary styles</li>
+                                <li>Opposite sides</li>
+                                <li>Story completion</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cell-type">Tech-First News Consumer</div>
+                        <div class="cell-segment">Power Users</div>
+                        <div class="cell-features">
+                            Features:
+                            <ul class="features-list">
+                                <li>Multiple KGEs</li>
+                                <li>Audio summaries</li>
+                                <li>External links</li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Medium News Interest</th>
+                    <td>
+                        <div class="cell-type">Traditional Reader</div>
+                        <div class="cell-segment">Casual Users</div>
+                        <div class="cell-features">
+                            Features:
+                            <ul class="features-list">
+                                <li>Story scrolls</li>
+                                <li>Visual content</li>
+                                <li>Basic summaries</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cell-type">Balanced Consumer</div>
+                        <div class="cell-segment">Core Users</div>
+                        <div class="cell-features">
+                            Features:
+                            <ul class="features-list">
+                                <li>Summary styles</li>
+                                <li>KGE following</li>
+                                <li>Story completion</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cell-type">AI Enthusiast</div>
+                        <div class="cell-segment">Power Users</div>
+                        <div class="cell-features">
+                            Features:
+                            <ul class="features-list">
+                                <li>All AI features</li>
+                                <li>Multiple KGEs</li>
+                                <li>Audio versions</li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Low News Interest</th>
+                    <td>
+                        <div class="cell-type">Skeptical Browser</div>
+                        <div class="cell-segment">Casual Users</div>
+                        <div class="cell-features">
+                            Features:
+                            <ul class="features-list">
+                                <li>Story scrolls</li>
+                                <li>Visual content</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cell-type">Occasional Reader</div>
+                        <div class="cell-segment">Casual Users</div>
+                        <div class="cell-features">
+                            Features:
+                            <ul class="features-list">
+                                <li>Basic summaries</li>
+                                <li>Single KGE following</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cell-type">Tech Explorer</div>
+                        <div class="cell-segment">New Users</div>
+                        <div class="cell-features">
+                            Features:
+                            <ul class="features-list">
+                                <li>KGE selection</li>
+                                <li>Basic feature exploration</li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
             </table>
-          </div>
-        )}
-      </CardContent>
-    </Card>
-  );
-};
+        </div>
+    </div>
 
-export default AudienceMapping;
+    <script>
+        function switchView(view) {
+            // Update buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update content
+            document.querySelectorAll('.view-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(view + '-view').classList.add('active');
+        }
+    </script>
+</body>
+</html>
