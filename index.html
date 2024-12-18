@@ -1,0 +1,264 @@
+import React, { useState } from 'react';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+
+const AudienceMapping = () => {
+  const funnelData = [
+    {
+      level: "Top of Funnel",
+      description: "Early adopters with highest potential for immediate activation",
+      rationale: "Placed here due to natural alignment with product value and lowest barriers to adoption",
+      width: "w-full",
+      segments: [
+        {
+          title: "AI Enthusiasts",
+          description: "Tech-forward early adopters",
+          behaviors: "Actively seek new AI tools, high feature exploration",
+          usage: "Power Users",
+          reasoning: "Natural product-market fit, minimal education needed",
+          features: [
+            "Complete stories from followed KGEs",
+            "Opposite sides summaries",
+            "Audio summaries",
+            "External links exploration",
+            "Multiple KGE following"
+          ]
+        },
+        {
+          title: "Forward-Thinking News Consumers",
+          description: "Seeking efficient news consumption",
+          behaviors: "Regular engagement with core features",
+          usage: "Core/Power Users",
+          reasoning: "Already looking for better news solutions",
+          features: [
+            "KGE following",
+            "Multiple summary styles",
+            "Opposite sides feature",
+            "Audio versions"
+          ]
+        }
+      ]
+    },
+    {
+      level: "Middle of Funnel",
+      description: "Interested users requiring more education and trust-building",
+      rationale: "Need more touchpoints before full adoption but show clear interest",
+      width: "w-4/5",
+      segments: [
+        {
+          title: "Core News Readers",
+          description: "Value balanced perspectives",
+          behaviors: "Consistent engagement with specific features",
+          usage: "Core Users",
+          reasoning: "Interested but need proof of value",
+          features: [
+            "Specific AI summary styles",
+            "Explain Like I'm 5 summaries",
+            "Opposite sides for complex topics"
+          ]
+        },
+        {
+          title: "Tech-Curious Users",
+          description: "Interested but cautious",
+          behaviors: "Testing basic features",
+          usage: "New/Casual Users",
+          reasoning: "Open to AI but need more convincing",
+          features: [
+            "Basic summary styles",
+            "KGE exploration",
+            "Story completion"
+          ]
+        }
+      ]
+    },
+    {
+      level: "Bottom of Funnel",
+      description: "Requires significant trust-building and education",
+      rationale: "Highest barriers to adoption but important for long-term growth",
+      width: "w-3/5",
+      segments: [
+        {
+          title: "Cautious Consumers",
+          description: "Need trust-building",
+          behaviors: "Limited, passive engagement",
+          usage: "Casual Users",
+          reasoning: "Skeptical of AI in news, need extensive proof",
+          features: [
+            "Complete story scrolls",
+            "Visual content consumption",
+            "Basic summaries"
+          ]
+        }
+      ]
+    }
+  ];
+
+  const matrixData = {
+    columns: ["Low Tech Adoption", "Medium Tech Adoption", "High Tech Adoption"],
+    rows: ["High News Interest", "Medium News Interest", "Low News Interest"],
+    cells: [
+      [
+        { 
+          type: "Cautious News Enthusiast", 
+          segment: "Core Users", 
+          focus: "Trust-building",
+          features: ["Basic summaries", "Visual content", "Single KGE following"]
+        },
+        { 
+          type: "Regular News Reader", 
+          segment: "Core Users", 
+          focus: "Feature education",
+          features: ["AI summary styles", "Opposite sides", "Story completion"]
+        },
+        { 
+          type: "Tech-First News Consumer", 
+          segment: "Power Users", 
+          focus: "Deep engagement",
+          features: ["Multiple KGEs", "Audio summaries", "External links"]
+        }
+      ],
+      [
+        { 
+          type: "Traditional Reader", 
+          segment: "Casual Users", 
+          focus: "Value demonstration",
+          features: ["Story scrolls", "Visual content", "Basic summaries"]
+        },
+        { 
+          type: "Balanced Consumer", 
+          segment: "Core Users", 
+          focus: "Feature adoption",
+          features: ["Summary styles", "KGE following", "Story completion"]
+        },
+        { 
+          type: "AI Enthusiast", 
+          segment: "Power Users", 
+          focus: "Feature exploration",
+          features: ["All AI features", "Multiple KGEs", "Audio versions"]
+        }
+      ],
+      [
+        { 
+          type: "Skeptical Browser", 
+          segment: "Casual Users", 
+          focus: "Basic engagement",
+          features: ["Story scrolls", "Visual content"]
+        },
+        { 
+          type: "Occasional Reader", 
+          segment: "Casual Users", 
+          focus: "Habit building",
+          features: ["Basic summaries", "Single KGE following"]
+        },
+        { 
+          type: "Tech Explorer", 
+          segment: "New Users", 
+          focus: "Onboarding",
+          features: ["KGE selection", "Basic feature exploration"]
+        }
+      ]
+    ]
+  };
+
+  return (
+    <Card className="w-full max-w-4xl">
+      <CardHeader>
+        <CardTitle>Particle Audience Mapping</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Tabs defaultValue="funnel" className="w-full">
+          <TabsList className="w-full mb-4">
+            <TabsTrigger value="funnel" className="w-1/2">Funnel View</TabsTrigger>
+            <TabsTrigger value="matrix" className="w-1/2">Persona Matrix</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="funnel">
+            <div className="space-y-6">
+              {funnelData.map((level, idx) => (
+                <div key={idx} className="relative flex justify-center">
+                  <div className={`${level.width} bg-gradient-to-b from-blue-50 to-blue-100 p-4 rounded-lg border border-blue-200`}>
+                    <div className="mb-4">
+                      <h3 className="font-bold text-lg text-blue-800">{level.level}</h3>
+                      <p className="text-sm text-gray-600">{level.description}</p>
+                      <p className="text-sm text-gray-500 italic">{level.rationale}</p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {level.segments.map((segment, segIdx) => (
+                        <div key={segIdx} className="bg-white p-4 rounded-lg shadow">
+                          <h4 className="font-semibold text-blue-600">{segment.title}</h4>
+                          <p className="text-sm text-gray-600">{segment.description}</p>
+                          <p className="text-sm mt-2">
+                            <span className="font-medium">Behaviors:</span> {segment.behaviors}
+                          </p>
+                          <p className="text-sm mt-1">
+                            <span className="font-medium">Usage Type:</span> {segment.usage}
+                          </p>
+                          <div className="mt-2">
+                            <span className="font-medium text-sm">Key Features:</span>
+                            <ul className="list-disc list-inside text-sm text-gray-600 mt-1">
+                              {segment.features.map((feature, fidx) => (
+                                <li key={fidx} className="ml-2">{feature}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  {idx < funnelData.length - 1 && (
+                    <div className="h-6 w-0 border-l-2 border-blue-200 border-dashed my-2"></div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="matrix">
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr>
+                    <th className="p-2 border"></th>
+                    {matrixData.columns.map((col, idx) => (
+                      <th key={idx} className="p-2 border bg-blue-50 font-semibold">
+                        {col}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {matrixData.rows.map((row, rowIdx) => (
+                    <tr key={rowIdx}>
+                      <th className="p-2 border bg-blue-50 font-semibold">
+                        {row}
+                      </th>
+                      {matrixData.cells[rowIdx].map((cell, cellIdx) => (
+                        <td key={cellIdx} className="p-2 border">
+                          <div className="space-y-2">
+                            <p className="font-medium text-blue-600">{cell.type}</p>
+                            <p className="text-sm text-gray-600">{cell.segment}</p>
+                            <p className="text-sm text-gray-500">Focus: {cell.focus}</p>
+                            <div className="text-sm">
+                              <span className="font-medium">Features:</span>
+                              <ul className="list-disc list-inside mt-1 text-gray-600">
+                                {cell.features.map((feature, fidx) => (
+                                  <li key={fidx} className="ml-2">{feature}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </TabsContent>
+        </Tabs>
+      </CardContent>
+    </Card>
+  );
+};
+
+export default AudienceMapping;
