@@ -64,19 +64,6 @@
             display: block;
         }
 
-        .funnel-section {
-            margin-bottom: 32px;
-            background: linear-gradient(to bottom, #f3f4f6, #e5e7eb);
-            border-radius: 8px;
-            padding: 24px;
-            border: 1px solid #e5e7eb;
-            transition: all 0.3s ease;
-        }
-
-        .funnel-section.top { width: 100%; }
-        .funnel-section.middle { width: 90%; margin-left: auto; margin-right: auto; }
-        .funnel-section.bottom { width: 80%; margin-left: auto; margin-right: auto; }
-
         .section-title {
             color: #1e40af;
             font-size: 20px;
@@ -90,10 +77,11 @@
             margin-bottom: 16px;
         }
 
-        .segments-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+        .features-list {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: #4b5563;
+            font-size: 14px;
         }
 
         .segment-card {
@@ -101,6 +89,7 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            margin-bottom: 16px;
         }
 
         .segment-title {
@@ -114,120 +103,6 @@
             font-size: 14px;
             margin-bottom: 12px;
         }
-
-        .features-list {
-            list-style-type: disc;
-            margin-left: 20px;
-            color: #4b5563;
-            font-size: 14px;
-        }
-
-        .matrix-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        .matrix-table th,
-        .matrix-table td {
-            border: 1px solid #e5e7eb;
-            padding: 16px;
-            text-align: left;
-        }
-
-        .matrix-table th {
-            background: #f3f4f6;
-            font-weight: 600;
-            color: #1e40af;
-        }
-
-        .matrix-table td {
-            vertical-align: top;
-            background: white;
-        }
-
-        .cell-type {
-            color: #2563eb;
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-
-        .cell-segment {
-            color: #4b5563;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .cell-features {
-            margin-top: 8px;
-            font-size: 14px;
-            color: #4b5563;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 16px;
-            }
-            
-            .segments-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .matrix-table {
-                display: block;
-                overflow-x: auto;
-            }
-        }
-
-        .definition-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-top: 12px;
-        }
-        .definition-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 12px;
-            border-radius: 6px;
-        }
-        .segment-definition {
-            background: #1e40af;
-            color: white;
-            padding: 16px;
-            border-radius: 8px;
-            margin-bottom: 24px;
-        }
-        .refined-statement {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid #8b5cf6;
-            line-height: 1.8;
-        }
-        .strategy-box {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 16px 0;
-        }
-        .risks-section {
-            background: #fee2e2;
-            padding: 16px;
-            border-radius: 8px;
-            margin: 16px 0;
-        }
-        .analysis-box {
-            background: #f1f5f9;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 16px 0;
-        }
-        .subsection-title {
-            color: #2563eb;
-            font-size: 1.2em;
-            margin: 16px 0;
-        }
     </style>
 </head>
 <body>
@@ -239,569 +114,100 @@
             <button class="tab-button" onclick="switchView('insights-view')">Current Insights & Data</button>
             <button class="tab-button" onclick="switchView('funnel-view')">Funnel View</button>
             <button class="tab-button" onclick="switchView('matrix-view')">Matrix View</button>
-            <button class="tab-button" onclick="switchView('social-view')">Content Marketing & Social Strategy</button>
+            <button class="tab-button" onclick="switchView('content-marketing-view')">Content Marketing & Social Strategy</button>
         </div>
 
-<div id="assumptions-view" class="view-content active">
-    <!-- Key Assumptions & Testing Content -->
-    
-    <!-- Section 1 -->
-    <div class="section-title">1. FEATURE USAGE HYPOTHESES</div>
-    <div class="section-description">
-        Our early data suggests certain feature usage patterns may indicate specific user preferences and behaviors:
-    </div>
-    <ul class="features-list">
-        <li>Opposite Sides selection suggests users who value balanced perspectives and are willing to engage with contrasting viewpoints</li>
-        <li>Multiple feature engagement in a single session likely indicates power user potential</li>
-        <li>Q&A usage may indicate either top of funnel and middle of funnel engagement patterns or both, with bottom of funnel likelihood being low</li>
-        <li>Story completion through full cluster scrolling could indicate deeper engagement and comprehension</li>
-        <li>KGE following behavior might signal specific topic interest and likelihood of return visits</li>
-        <li>Audio version usage could indicate users seeking efficiency or alternative consumption methods</li>
-        <li>External link exploration may suggest users wanting deeper understanding of topics</li>
-        <li>Summary style preferences (Bullet Points, Five Ws) might indicate how users prefer to process information</li>
-    </ul>
-</div>
-
-    <!-- Section 2 -->
-    <div class="section-title">2. ASSUMED USER BEHAVIORS BASED ON FEATURES</div>
-    <div class="section-description">
-        We're basing our early assumptions on a combination of early Mixpanel analytics, employee usage patterns, feedback from our Slack community, and social listening. Here's what we believe about our user segments:
-    </div>
-
-    <div class="segment-card">
-        <div class="segment-title">Power Users via AI Interest</div>
-        <div class="segment-description">
-            These users represent an interesting opportunity: While they might not typically be heavy news consumers, their enthusiasm for AI technology drives high engagement. Think of them like tech enthusiasts who discover a new way to consume news - the AI element is the hook that pulls them in and keeps them engaged. They're likely to:
-        </div>
-        <ul class="features-list">
-            <li>Experiment with every new AI feature we release</li>
-            <li>Provide detailed feedback on technical capabilities</li>
-            <li>Become advocates for the platform's innovation</li>
-            <li>Help us identify new feature opportunities</li>
-        </ul>
-    </div>
-
-    <div class="segment-card">
-        <div class="segment-title">Power & Core Users via News Interest</div>
-        <div class="segment-description">
-            These users come to us primarily seeking better news consumption, and the AI features enhance their experience rather than drive it. They're similar to people who switched from traditional cable to streaming services - they want the same content, but through a better delivery system. We see them:
-        </div>
-        <ul class="features-list">
-            <li>Using multiple formats to deeply understand stories</li>
-            <li>Regularly engaging with contrasting viewpoints</li>
-            <li>Valuing both efficiency and depth</li>
-            <li>Building consistent usage habits</li>
-        </ul>
-    </div>
-
-    <div class="segment-card">
-        <div class="segment-title">Core & Casual Users via Feature Exploration</div>
-        <div class="segment-description">
-            These users are our "try before you buy" audience. They're curious but cautious, needing clear evidence of value before deepening their engagement. Think of them like people testing a new productivity app - they'll start with basic features and only expand their usage if they see clear benefits. We need to:
-        </div>
-        <ul class="features-list">
-            <li>Provide clear pathways to understand each feature's value</li>
-            <li>Demonstrate immediate benefits from basic features</li>
-            <li>Create obvious progression paths to more advanced features</li>
-        </ul>
-    </div>
-
-    <!-- Section 3 -->
-    <div class="section-title">3. TESTING APPROACH</div>
-    <div class="section-description">
-        We're gathering insights through an interconnected feedback system:
-    </div>
-    
-    <div class="segment-card">
-        <ul class="features-list">
-            <li>Real usage data from early app adoption via Mixpanel analytics</li>
-            <li>Direct feedback from our engaged Slack community</li>
-            <li>Social media engagement patterns and comments</li>
-            <li>Employee usage patterns (as early adopters themselves)</li>
-            <li>Alignment with our core company value proposition</li>
-            <li>Content marketing strategy acting as continuous feedback loop:
-                <ul>
-                    <li>Content performance informs user preferences</li>
-                    <li>User engagement with different content types validates assumptions</li>
-                    <li>Marketing touchpoint responses help refine audience understanding</li>
-                    <li>Social engagement patterns reveal content format preferences</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
-
-    <div id="insights-view" class="view-content">
-    <!-- Current Insights & Data Content -->
-</div>
-    <!-- Section 1 -->
-    <div class="section-title">1. FEATURE ENGAGEMENT DATA</div>
-    <div class="section-description">
-        Our most significant early data points come from summary style selection patterns, which directly inform our content marketing approach:
-    </div>
-
-    <div class="segment-card">
-        <ul class="features-list">
-            <li>Opposite Sides summary style (90% of unique user selections) suggests users value balanced, comprehensive content</li>
-            <li>Bullet Points format (52% of unique user selections) indicates preference for clear, structured information</li>
-            <li>Five Ws format (40% of unique user selections) shows appreciation for traditional news framework</li>
-        </ul>
-
-        <div class="segment-description">
-            These selections can occur multiple times within any given cluster. This tells us not just how users consume news, but specifically how they prefer to engage with content. These preferences are crucial because:
+        <!-- Assumptions View -->
+        <div id="assumptions-view" class="view-content active">
+            <div class="section-title">1. FEATURE USAGE HYPOTHESES</div>
+            <div class="section-description">
+                Our early data suggests certain feature usage patterns may indicate specific user preferences and behaviors:
+            </div>
+            <ul class="features-list">
+                <li>Opposite Sides selection suggests users who value balanced perspectives</li>
+                <li>Multiple feature engagement indicates power user potential</li>
+                <li>Q&A usage may indicate middle or top-of-funnel engagement</li>
+                <li>Story completion could indicate deeper engagement and comprehension</li>
+                <li>KGE following behavior might signal specific topic interest</li>
+            </ul>
         </div>
 
-        <ul class="features-list">
-            <li>They inform how we should structure our marketing messages</li>
-            <li>They guide our voice and tone across all marketing touchpoints</li>
-            <li>They help us match content formats to user preferences</li>
-            <li>They reveal how different segments prefer to process information</li>
-        </ul>
-
-        <div class="segment-description">
-            Think of it like this: If a user prefers bullet points in the app, they'll likely respond better to clear, structured marketing messages. If they use Opposite Sides frequently, they might engage more with marketing that presents multiple perspectives.
+        <!-- Insights View -->
+        <div id="insights-view" class="view-content">
+            <div class="section-title">1. FEATURE ENGAGEMENT DATA</div>
+            <div class="section-description">
+                Summary style selections provide the most significant data:
+            </div>
+            <ul class="features-list">
+                <li>Opposite Sides: 90% preference for balanced perspectives</li>
+                <li>Bullet Points: 52% preference for clarity</li>
+                <li>Five Ws: 40% preference for structured frameworks</li>
+            </ul>
         </div>
-    </div>
 
-    <!-- Section 2 -->
-    <div class="section-title">2. ASSUMED BEHAVIORS BASED ON PRODUCT FEATURES</div>
-    <div class="section-description">
-        Each feature interaction gives us clues about user preferences and potential:
-    </div>
-
-    <div class="segment-card">
-        <div class="segment-title">Power User Indicators</div>
-        <div class="segment-description">
-            We're looking at several key behaviors that suggest power user potential:
-        </div>
-        <ul class="features-list">
-            <li>Story Completion: We're building tracking to measure full cluster completion (think of this like tracking if someone reads an entire article vs just the headline)</li>
-            <li>Feature Combinations: Users who mix multiple features in one session, especially combining Opposite Sides with other features, showing they're extracting maximum value</li>
-            <li>Exploration Patterns: Their willingness to try external links and audio versions suggests they're looking to deeply understand topics</li>
-            <li>Q&A Engagement: We're studying how Q&A usage might indicate product-market fit (similar to how commenting on articles shows deeper engagement with traditional news)</li>
-        </ul>
-    </div>
-
-    <div class="segment-card">
-        <div class="segment-title">Core User Patterns</div>
-        <div class="segment-description">
-            These users show different but equally important engagement patterns:
-        </div>
-        <ul class="features-list">
-            <li>Feature Focus: They tend to find and stick with specific features that work for them, similar to how people might always read the sports section first in a traditional newspaper</li>
-            <li>Gradual Exploration: Unlike power users who dive into everything, they methodically try new features over time</li>
-            <li>Consistent Usage: They develop regular patterns with their preferred features, suggesting they've found clear value</li>
-            <li>Q&A Potential: Their Q&A usage might indicate different things than power users, helping us understand how this feature serves different segments</li>
-        </ul>
-    </div>
-</div>
-    
+        <!-- Funnel View -->
         <div id="funnel-view" class="view-content">
-            <!-- Top of Funnel -->
-            <div class="funnel-section top">
-                <div class="section-title">Top of Funnel</div>
-                <div class="section-description">Early adopters with highest potential for immediate activation</div>
-                <div class="segments-grid">
-                    <div class="segment-card">
-                        <div class="segment-title">AI Enthusiasts</div>
-                        <div class="segment-description">Tech-forward early adopters</div>
-                        <div class="features-title">Key Features & Behaviors:</div>
-                        <ul class="features-list">
-                            <li>Complete stories from followed KGEs</li>
-                            <li>Opposite sides summaries</li>
-                            <li>Audio summaries</li>
-                            <li>External links exploration</li>
-                        </ul>
-                    </div>
-                    <div class="segment-card">
-                        <div class="segment-title">Forward-Thinking News Consumers</div>
-                        <div class="segment-description">Seeking efficient news consumption</div>
-                        <div class="features-title">Key Features & Behaviors:</div>
-                        <ul class="features-list">
-                            <li>KGE following</li>
-                            <li>Multiple summary styles</li>
-                            <li>Opposite sides feature</li>
-                            <li>Audio versions</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Middle of Funnel -->
-            <div class="funnel-section middle">
-                <div class="section-title">Middle of Funnel</div>
-                <div class="section-description">Interested users requiring more education and trust-building</div>
-                <div class="segments-grid">
-                    <div class="segment-card">
-                        <div class="segment-title">Core News Readers</div>
-                        <div class="segment-description">Value balanced perspectives</div>
-                        <div class="features-title">Key Features & Behaviors:</div>
-                        <ul class="features-list">
-                            <li>Specific AI summary styles</li>
-                            <li>Explain Like I'm 5 summaries</li>
-                            <li>Opposite sides for complex topics</li>
-                        </ul>
-                    </div>
-                    <div class="segment-card">
-                        <div class="segment-title">Tech-Curious Users</div>
-                        <div class="segment-description">Interested but cautious</div>
-                        <div class="features-title">Key Features & Behaviors:</div>
-                        <ul class="features-list">
-                            <li>Basic summary styles</li>
-                            <li>KGE exploration</li>
-                            <li>Story completion</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom of Funnel -->
-            <div class="funnel-section bottom">
-                <div class="section-title">Bottom of Funnel</div>
-                <div class="section-description">Requires significant trust-building and education</div>
-                <div class="segments-grid">
-                    <div class="segment-card">
-                        <div class="segment-title">Cautious Consumers</div>
-                        <div class="segment-description">Need trust-building</div>
-                        <div class="features-title">Key Features & Behaviors:</div>
-                        <ul class="features-list">
-                            <li>Complete story scrolls</li>
-                            <li>Visual content consumption</li>
-                            <li>Basic summaries</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <div class="section-title">Top of Funnel</div>
+            <div class="section-description">Early adopters most likely to activate immediately:</div>
+            <ul class="features-list">
+                <li>Opposite sides summaries</li>
+                <li>Audio summaries</li>
+                <li>External links</li>
+            </ul>
         </div>
+
+        <!-- Matrix View -->
         <div id="matrix-view" class="view-content">
-            <table class="matrix-table">
+            <div class="section-title">1. USER BEHAVIOR MATRIX</div>
+            <table>
                 <tr>
-                    <th></th>
-                    <th>Low Tech Adoption</th>
-                    <th>Medium Tech Adoption</th>
+                    <th>Segment</th>
                     <th>High Tech Adoption</th>
+                    <th>Medium Tech Adoption</th>
+                    <th>Low Tech Adoption</th>
                 </tr>
                 <tr>
-                    <th>High News Interest</th>
-                    <td>
-                        <div class="cell-type">Cautious News Enthusiast</div>
-                        <div class="cell-segment">Core Users</div>
-                        <div class="cell-features">
-                            <strong>Key Features & Behaviors:</strong>
-                            <ul class="features-list">
-                                <li>Basic summaries</li>
-                                <li>Visual content</li>
-                                <li>Single KGE following</li>
-                            </ul>
-                        </div>
-                    </td>
-                   <td style="background: #d1d5db;">
-                        <div class="cell-type">Regular News Reader</div>
-                        <div class="cell-segment">Core Users</div>
-                        <div class="cell-features">
-                            <strong>Key Features & Behaviors:</strong>
-                            <ul class="features-list">
-                                <li>AI summary styles</li>
-                                <li>Opposite sides</li>
-                                <li>Story completion</li>
-                            </ul>
-                        </div>
-                    </td>
-                    <td style="background: #d1d5db;">
-                        <div class="cell-type">Tech-First News Consumer</div>
-                        <div class="cell-segment">Power Users</div>
-                        <div class="cell-features">
-                            <strong>Key Features & Behaviors:</strong>
-                            <ul class="features-list">
-                                <li>Multiple KGEs</li>
-                                <li>Audio summaries</li>
-                                <li>External links</li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Medium News Interest</th>
-                    <td>
-                        <div class="cell-type">Traditional Reader</div>
-                        <div class="cell-segment">Casual Users</div>
-                        <div class="cell-features">
-                            <strong>Key Features & Behaviors:</strong>
-                            <ul class="features-list">
-                                <li>Story scrolls</li>
-                                <li>Visual content</li>
-                                <li>Basic summaries</li>
-                            </ul>
-                        </div>
-                    </td>
-                    <td style="background: #d1d5db;">
-                        <div class="cell-type">Balanced Consumer</div>
-                        <div class="cell-segment">Core Users</div>
-                        <div class="cell-features">
-                            <strong>Key Features & Behaviors:</strong>
-                            <ul class="features-list">
-                                <li>Summary styles</li>
-                                <li>KGE following</li>
-                                <li>Story completion</li>
-                            </ul>
-                        </div>
-                    </td>
-                    <td style="background: #d1d5db;">
-                        <div class="cell-type">AI Enthusiast</div>
-                        <div class="cell-segment">Power Users</div>
-                        <div class="cell-features">
-                            <strong>Key Features & Behaviors:</strong>
-                            <ul class="features-list">
-                                <li>All AI features</li>
-                                <li>Multiple KGEs</li>
-                                <li>Audio versions</li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Low News Interest</th>
-                    <td>
-                        <div class="cell-type">Skeptical Browser</div>
-                        <div class="cell-segment">Casual Users</div>
-                        <div class="cell-features">
-                            <strong>Key Features & Behaviors:</strong>
-                            <ul class="features-list">
-                                <li>Story scrolls</li>
-                                <li>Visual content</li>
-                            </ul>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="cell-type">Occasional Reader</div>
-                        <div class="cell-segment">Casual Users</div>
-                        <div class="cell-features">
-                            <strong>Key Features & Behaviors:</strong>
-                            <ul class="features-list">
-                                <li>Basic summaries</li>
-                                <li>Single KGE following</li>
-                            </ul>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="cell-type">Tech Explorer</div>
-                        <div class="cell-segment">New Users</div>
-                        <div class="cell-features">
-                            <strong>Key Features & Behaviors:</strong>
-                            <ul class="features-list">
-                                <li>KGE selection</li>
-                                <li>Basic feature exploration</li>
-                            </ul>
-                        </div>
-                    </td>
+                    <td>High News Interest</td>
+                    <td>Tech-First News Consumer</td>
+                    <td>Regular News Reader</td>
+                    <td>Cautious News Enthusiast</td>
                 </tr>
             </table>
         </div>
-    <div id="social-view" class="view-content">
-            <!-- Top of Funnel Section -->
-            <div class="segment-section">
-                <h2 class="section-title">Top of Funnel</h2>
 
-                <!-- Contrasting Viewpoints -->
-                <div>
-                    <h3 class="subsection-title">Contrasting Viewpoints</h3>
-                    
-                    <div class="segment-definition">
-                        <h3>User Segment: Tech-First Consumers, Regular News Consumers, & AI Enthusiasts</h3>
-                        <div class="definition-grid">
-                            <div class="definition-item">
-                                <strong>Who:</strong> Early adopters with high tech literacy
-                            </div>
-                            <div class="definition-item">
-                                <strong>Characteristics:</strong> Value innovation and multiple perspectives
-                            </div>
-                            <div class="definition-item">
-                                <strong>Journey Stage:</strong> Immediate power user potential
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="refined-statement">
-                        "If we assume our top-funnel, tech-first news consumer power users strongly prefer the 'Opposite Sides' summary style (based on 90% of unique user selections thus far), it suggests they value multiple perspectives and technical depth. This insight could inform our social strategy by creating content that mirrors this style—emphasizing contrasting viewpoints while showcasing Particle's unique AI capabilities. By leading with technical transparency and balanced analysis, we can further validate these users' interest in both innovation and comprehensive, unbiased news consumption."
-                    </div>
-
-                    <div class="strategy-box">
-                        <h4>Strengths</h4>
-                        <ul>
-                            <li>Aligns content with user preferences</li>
-                            <li>Showcases Particle's unique AI capabilities</li>
-                            <li>Emphasizes balanced analysis</li>
-                        </ul>
-                    </div>
-
-                    <div class="analysis-box">
-                        <h4>Considerations</h4>
-                        <ul>
-                            <li>Ensure objectivity in contrasting viewpoints</li>
-                            <li>Balance depth with digestibility</li>
-                            <li>Continuously validate through engagement metrics</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Feature Mix & Customization -->
-                <div>
-                    <h3 class="subsection-title">Feature Mix & Customization</h3>
-
-                    <div class="refined-statement">
-                        "If we assume our top-funnel, AI enthusiast power users prefer to engage with a mix of product features, it suggests they value customization and personalization in how they consume content. This insight could drive our social strategy by encouraging experimentation with diverse content formats and frameworks that offer distinct entry points and perspectives. By creating a variety of content styles—ranging from in-depth analyses to quick summaries—we can align with these users' preferences and allow them to self-select the value they derive from Particle."
-                    </div>
-
-                    <div class="strategy-box">
-                        <h4>Strengths</h4>
-                        <ul>
-                            <li>Caters to users' desire for control over content consumption</li>
-                            <li>Allows users to self-select their value</li>
-                            <li>Provides multiple entry points for engagement</li>
-                        </ul>
-                    </div>
-
-                    <div class="analysis-box">
-                        <h4>Considerations</h4>
-                        <ul>
-                            <li>Maintain cohesive brand voice across formats</li>
-                            <li>Clearly communicate purpose of each content style</li>
-                            <li>Monitor engagement to identify most effective formats</li>
-                        </ul>
-                    </div>
-                </div>
+        <!-- Content Marketing & Social Strategy View -->
+        <div id="content-marketing-view" class="view-content">
+            <div class="section-title">1. CONTENT MARKETING & SOCIAL STRATEGY</div>
+            <div class="section-description">
+                Leveraging insights to refine our content marketing approach:
             </div>
-
-            <!-- Middle Funnel Section -->
-            <div class="segment-section">
-                <h2 class="section-title">Middle Funnel: Educational Simplicity</h2>
-
-                <div class="segment-definition">
-                    <h3>User Segment: Core News Readers & Tech-Curious</h3>
-                    <div class="definition-grid">
-                        <div class="definition-item">
-                            <strong>Who:</strong> Traditional news readers and tech newbies
-                        </div>
-                        <div class="definition-item">
-                            <strong>Characteristics:</strong> Value structured information, require education
-                        </div>
-                        <div class="definition-item">
-                            <strong>Journey Stage:</strong> Exploring features, building trust
-                        </div>
-                    </div>
-                </div>
-
-                <div class="refined-statement">
-                    "If we assume our middle-funnel, core users—comprising traditional news readers and tech newbies or skeptics—require more education and trust-building as they explore Particle's features, our social strategy for this segment could prioritize clear and digestible educational content. By breaking down complex topics into approachable formats, we can help bridge the gap between traditional news consumption and AI-powered insights.
-
-                    In doing so, we could explore leveraging less popular but simpler summary styles like 'Bullet Points' (selected by 52% of unique users) and 'Five Ws' (selected by 40% of unique users). These summary styles suggest a preference for structured, clear information delivery, which may resonate with users who value straightforward explanations.
-
-                    This approach could serve to build trust and ease skepticism—both about news consumption in the current climate and the evolving role of AI technology."
-                </div>
-
-                <div class="strategy-box">
-                    <h4>Educational Simplicity Strengths</h4>
-                    <ul>
-                        <li>Prioritizes clear and digestible educational content</li>
-                        <li>Addresses unique needs of less AI-familiar users</li>
-                        <li>Builds trust through transparent explanations</li>
-                    </ul>
-                </div>
-
-                <div class="analysis-box">
-                    <h4>Key Considerations</h4>
-                    <ul>
-                        <li>Ensure educational content remains engaging</li>
-                        <li>Use relatable examples and case studies</li>
-                        <li>Incorporate user feedback to refine content</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Bottom Funnel Section -->
-            <div class="segment-section">
-                <h2 class="section-title">Bottom Funnel: Cautious Connections & Rejectors</h2>
-
-                <div class="segment-definition">
-                    <h3>User Segment: Cautious Consumers</h3>
-                    <div class="definition-grid">
-                        <div class="definition-item">
-                            <strong>Who:</strong> Most cautious and skeptical audience
-                        </div>
-                        <div class="definition-item">
-                            <strong>Characteristics:</strong> Low trust in AI, value traditional methods
-                        </div>
-                        <div class="definition-item">
-                            <strong>Journey Stage:</strong> Potential non-users, need education
-                        </div>
-                    </div>
-                </div>
-
-                <div class="refined-statement">
-                    "If we assume bottom-funnel users are our most cautious and skeptical audience—potentially with low interest in traditional news consumption—we can anticipate that many will remain non-users. However, non-user education and reputation building remain critical for driving consideration over time. Some of these individuals may eventually move up the funnel, while others may still come to understand and advocate for the product's value, even if they never use it themselves. For example, men understand the value of tampons without being users of the product.
-
-                    With this in mind, our social strategy need not prioritize this segment immediately. Instead, our focus should remain on educating and engaging early adopters and core users. As we scale and acquire larger off-platform media budgets, this bottom-funnel segment can be targeted through broader awareness campaigns, such as OOH placements and ATL initiatives, to address their concerns and build trust on a larger scale."
-                </div>
-
-                <div class="strategy-box">
-                    <h4>Strengths</h4>
-                    <ul>
-                        <li>Prioritization: Acknowledges challenges in converting highly skeptical users</li>
-                        <li>Reputation-Building: Recognizes importance of non-user education</li>
-                        <li>Future-Proofing: Sets stage for potential future consideration</li>
-                    </ul>
-                </div>
-
-                <div class="risks-section">
-                    <h4>Potential Risks</h4>
-                    <ul>
-                        <li>Missed Advocacy Opportunities: Some cautious users may convert earlier with focused trust-building</li>
-                        <li>Brand Perception Gap: Ensure these users don't perceive Particle as overly niche or exclusionary</li>
-                    </ul>
-                </div>
-
-                <div class="analysis-box">
-                    <h4>Future Considerations</h4>
-                    <ul>
-                        <li>Non-User Content Examples:</li>
-                        <ul>
-                            <li>Case studies showing successful real-world usage</li>
-                            <li>Transparent breakdowns of AI accuracy and bias mitigation</li>
-                        </ul>
-                        <li>Longer-Term Planning:</li>
-                        <ul>
-                            <li>Include non-user education in future campaigns</li>
-                            <li>Frame as complementary rather than primary effort</li>
-                        </ul>
-                    </ul>
-                </div>
-            </div>
+            <ul class="features-list">
+                <li>Focus on early adopters with Opposite Sides summary preferences</li>
+                <li>Create engaging educational content</li>
+                <li>Emphasize transparency and unbiased reporting</li>
+                <li>Incorporate user feedback loops into strategy development</li>
+            </ul>
         </div>
+    </div>
 
     <script>
         function switchView(view) {
-    // Remove the active class from all tab buttons
-    document.querySelectorAll('.tab-button').forEach(button => {
-        button.classList.remove('active');
-    });
+            // Remove active class from all tab buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
 
-    // Find the button corresponding to the clicked tab and add the active class
-    const activeButton = document.querySelector(`[onclick="switchView('${view}')"]`);
-    if (activeButton) {
-        activeButton.classList.add('active');
-    }
+            // Add active class to the clicked tab button
+            document.querySelector(`[onclick="switchView('${view}')"]`).classList.add('active');
 
-    // Hide all content sections
-    document.querySelectorAll('.view-content').forEach(content => {
-        content.classList.remove('active');
-    });
+            // Hide all views
+            document.querySelectorAll('.view-content').forEach(content => {
+                content.classList.remove('active');
+            });
 
-    // Show the selected content section
-    const activeContent = document.getElementById(view);
-    if (activeContent) {
-        activeContent.classList.add('active');
-    }
-}
+            // Show the selected view
+            document.getElementById(view).classList.add('active');
+        }
     </script>
 </body>
 </html>
