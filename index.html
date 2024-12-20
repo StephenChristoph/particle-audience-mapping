@@ -235,11 +235,158 @@
         <h1><em>Who is Particle for?</em> | Audience Mapping</h1>
 
         <div class="tabs">
+            <button class="tab-button" onclick="switchView('assumptions')">Key Assumptions & Testing</button>
+            <button class="tab-button" onclick="switchView('insights')">Current Insights & Data</button>
             <button class="tab-button active" onclick="switchView('funnel')">Funnel View</button>
             <button class="tab-button" onclick="switchView('matrix')">Matrix View</button>
             <button class="tab-button" onclick="switchView('social')">Content Marketing & Social Strategy</button>
         </div>
 
+        <div id="assumptions" class="view-content">
+    
+    <div class="section-title">1. FEATURE USAGE HYPOTHESES</div>
+    <div class="section-description">
+        Our early data suggests certain feature usage patterns may indicate specific user preferences and behaviors:
+    </div>
+    <ul class="features-list">
+        <li>Opposite Sides selection suggests users who value balanced perspectives and are willing to engage with contrasting viewpoints</li>
+        <li>Multiple feature engagement in a single session likely indicates power user potential</li>
+        <li>Q&A usage may indicate either top of funnel and middle of funnel engagement patterns or both, with bottom of funnel likelihood being low</li>
+        <li>Story completion through full cluster scrolling could indicate deeper engagement and comprehension</li>
+        <li>KGE following behavior might signal specific topic interest and likelihood of return visits</li>
+        <li>Audio version usage could indicate users seeking efficiency or alternative consumption methods</li>
+        <li>External link exploration may suggest users wanting deeper understanding of topics</li>
+        <li>Summary style preferences (Bullet Points, Five Ws) might indicate how users prefer to process information</li>
+    </ul>
+
+    <div class="section-title">2. ASSUMED USER BEHAVIORS BASED ON FEATURES</div>
+    <div class="section-description">
+        We're basing our early assumptions on a combination of early Mixpanel analytics, employee usage patterns, feedback from our Slack community, and social listening. Here's what we believe about our user segments:
+    </div>
+
+    <div class="segment-card">
+        <div class="segment-title">Power Users via AI Interest</div>
+        <div class="segment-description">
+            These users represent an interesting opportunity: While they might not typically be heavy news consumers, their enthusiasm for AI technology drives high engagement. Think of them like tech enthusiasts who discover a new way to consume news - the AI element is the hook that pulls them in and keeps them engaged. They're likely to:
+        </div>
+        <ul class="features-list">
+            <li>Experiment with every new AI feature we release</li>
+            <li>Provide detailed feedback on technical capabilities</li>
+            <li>Become advocates for the platform's innovation</li>
+            <li>Help us identify new feature opportunities</li>
+        </ul>
+    </div>
+
+    <div class="segment-card">
+        <div class="segment-title">Power & Core Users via News Interest</div>
+        <div class="segment-description">
+            These users come to us primarily seeking better news consumption, and the AI features enhance their experience rather than drive it. They're similar to people who switched from traditional cable to streaming services - they want the same content, but through a better delivery system. We see them:
+        </div>
+        <ul class="features-list">
+            <li>Using multiple formats to deeply understand stories</li>
+            <li>Regularly engaging with contrasting viewpoints</li>
+            <li>Valuing both efficiency and depth</li>
+            <li>Building consistent usage habits</li>
+        </ul>
+    </div>
+
+    <div class="segment-card">
+        <div class="segment-title">Core & Casual Users via Feature Exploration</div>
+        <div class="segment-description">
+            These users are our "try before you buy" audience. They're curious but cautious, needing clear evidence of value before deepening their engagement. Think of them like people testing a new productivity app - they'll start with basic features and only expand their usage if they see clear benefits. We need to:
+        </div>
+        <ul class="features-list">
+            <li>Provide clear pathways to understand each feature's value</li>
+            <li>Demonstrate immediate benefits from basic features</li>
+            <li>Create obvious progression paths to more advanced features</li>
+        </ul>
+    </div>
+
+    <div class="section-title">3. TESTING APPROACH</div>
+    <div class="section-description">
+        We're gathering insights through an interconnected feedback system:
+    </div>
+    
+    <div class="segment-card">
+        <ul class="features-list">
+            <li>Real usage data from early app adoption via Mixpanel analytics</li>
+            <li>Direct feedback from our engaged Slack community</li>
+            <li>Social media engagement patterns and comments</li>
+            <li>Employee usage patterns (as early adopters themselves)</li>
+            <li>Alignment with our core company value proposition</li>
+            <li>Content marketing strategy acting as continuous feedback loop:
+                <ul>
+                    <li>Content performance informs user preferences</li>
+                    <li>User engagement with different content types validates assumptions</li>
+                    <li>Marketing touchpoint responses help refine audience understanding</li>
+                    <li>Social engagement patterns reveal content format preferences</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+    <div id="insights" class="view-content">
+    <div class="section-title">1. FEATURE ENGAGEMENT DATA</div>
+    <div class="section-description">
+        Our most significant early data points come from summary style selection patterns, which directly inform our content marketing approach:
+    </div>
+
+    <div class="segment-card">
+        <ul class="features-list">
+            <li>Opposite Sides summary style (90% of unique user selections) suggests users value balanced, comprehensive content</li>
+            <li>Bullet Points format (52% of unique user selections) indicates preference for clear, structured information</li>
+            <li>Five Ws format (40% of unique user selections) shows appreciation for traditional news framework</li>
+        </ul>
+
+        <div class="segment-description">
+            These selections can occur multiple times within any given cluster. This tells us not just how users consume news, but specifically how they prefer to engage with content. These preferences are crucial because:
+        </div>
+
+        <ul class="features-list">
+            <li>They inform how we should structure our marketing messages</li>
+            <li>They guide our voice and tone across all marketing touchpoints</li>
+            <li>They help us match content formats to user preferences</li>
+            <li>They reveal how different segments prefer to process information</li>
+        </ul>
+
+        <div class="segment-description">
+            Think of it like this: If a user prefers bullet points in the app, they'll likely respond better to clear, structured marketing messages. If they use Opposite Sides frequently, they might engage more with marketing that presents multiple perspectives.
+        </div>
+    </div>
+
+    <div class="section-title">2. ASSUMED BEHAVIORS BASED ON PRODUCT FEATURES</div>
+    <div class="section-description">
+        Each feature interaction gives us clues about user preferences and potential:
+    </div>
+
+    <div class="segment-card">
+        <div class="segment-title">Power User Indicators</div>
+        <div class="segment-description">
+            We're looking at several key behaviors that suggest power user potential:
+        </div>
+        <ul class="features-list">
+            <li>Story Completion: We're building tracking to measure full cluster completion (think of this like tracking if someone reads an entire article vs just the headline)</li>
+            <li>Feature Combinations: Users who mix multiple features in one session, especially combining Opposite Sides with other features, showing they're extracting maximum value</li>
+            <li>Exploration Patterns: Their willingness to try external links and audio versions suggests they're looking to deeply understand topics</li>
+            <li>Q&A Engagement: We're studying how Q&A usage might indicate product-market fit (similar to how commenting on articles shows deeper engagement with traditional news)</li>
+        </ul>
+    </div>
+
+    <div class="segment-card">
+        <div class="segment-title">Core User Patterns</div>
+        <div class="segment-description">
+            These users show different but equally important engagement patterns:
+        </div>
+        <ul class="features-list">
+            <li>Feature Focus: They tend to find and stick with specific features that work for them, similar to how people might always read the sports section first in a traditional newspaper</li>
+            <li>Gradual Exploration: Unlike power users who dive into everything, they methodically try new features over time</li>
+            <li>Consistent Usage: They develop regular patterns with their preferred features, suggesting they've found clear value</li>
+            <li>Q&A Potential: Their Q&A usage might indicate different things than power users, helping us understand how this feature serves different segments</li>
+        </ul>
+    </div>
+</div>
+    
         <div id="funnel-view" class="view-content active">
             <!-- Top of Funnel -->
             <div class="funnel-section top">
