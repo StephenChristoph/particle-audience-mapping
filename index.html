@@ -569,19 +569,19 @@
 </div>
 
     <script>
-        function switchView(view) {
-            // Update buttons
-            document.querySelectorAll('.tab-button').forEach(button => {
-                button.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Update content
-            document.querySelectorAll('.view-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            document.getElementById(view + '-view').classList.add('active');
-        }
+       function switchView(view) {
+    // Update buttons
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    
+    // Update content
+    document.querySelectorAll('.view-content').forEach(content => {
+        content.classList.remove('active');
+    });
+    document.getElementById(view + '-view').classList.add('active');
+}
     </script>
 </body>
 </html>
