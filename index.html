@@ -64,19 +64,6 @@
             display: block;
         }
 
-        .funnel-section {
-            margin-bottom: 32px;
-            background: linear-gradient(to bottom, #f3f4f6, #e5e7eb);
-            border-radius: 8px;
-            padding: 24px;
-            border: 1px solid #e5e7eb;
-            transition: all 0.3s ease;
-        }
-
-        .funnel-section.top { width: 100%; }
-        .funnel-section.middle { width: 90%; margin-left: auto; margin-right: auto; }
-        .funnel-section.bottom { width: 80%; margin-left: auto; margin-right: auto; }
-
         .section-title {
             color: #1e40af;
             font-size: 20px;
@@ -90,93 +77,11 @@
             margin-bottom: 16px;
         }
 
-        .segments-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .segment-card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        .segment-title {
-            color: #2563eb;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .segment-description {
-            color: #4b5563;
-            font-size: 14px;
-            margin-bottom: 12px;
-        }
-
         .features-list {
             list-style-type: disc;
             margin-left: 20px;
             color: #4b5563;
             font-size: 14px;
-        }
-
-        .matrix-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        .matrix-table th,
-        .matrix-table td {
-            border: 1px solid #e5e7eb;
-            padding: 16px;
-            text-align: left;
-        }
-
-        .matrix-table th {
-            background: #f3f4f6;
-            font-weight: 600;
-            color: #1e40af;
-        }
-
-        .matrix-table td {
-            vertical-align: top;
-            background: white;
-        }
-
-        .cell-type {
-            color: #2563eb;
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-
-        .cell-segment {
-            color: #4b5563;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .cell-features {
-            margin-top: 8px;
-            font-size: 14px;
-            color: #4b5563;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 16px;
-            }
-            
-            .segments-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .matrix-table {
-                display: block;
-                overflow-x: auto;
-            }
         }
     </style>
 </head>
@@ -185,11 +90,75 @@
         <h1><em>Who is Particle for?</em> | Particle Audience Mapping</h1>
 
         <div class="tabs">
-            <button class="tab-button active" onclick="switchView('funnel')">Funnel View</button>
+            <button class="tab-button active" onclick="switchView('assumptions')">Key Assumptions & Testing</button>
+            <button class="tab-button" onclick="switchView('funnel')">Funnel View</button>
             <button class="tab-button" onclick="switchView('matrix')">Matrix View</button>
         </div>
 
-        <div id="funnel-view" class="view-content active">
+        <!-- Key Assumptions & Testing Tab -->
+        <div id="assumptions-view" class="view-content active">
+            <div class="section-title">1. FEATURE USAGE HYPOTHESES</div>
+            <div class="section-description">Our early data suggests certain feature usage patterns may indicate specific user preferences and behaviors:</div>
+            <ul class="features-list">
+                <li>Opposite Sides selection suggests users who value balanced perspectives and are willing to engage with contrasting viewpoints</li>
+                <li>Multiple feature engagement in a single session likely indicates power user potential</li>
+                <li>Q&A usage may indicate either top of funnel and middle of funnel engagement patterns or both, with bottom of funnel likelihood being low</li>
+                <li>Story completion through full cluster scrolling could indicate deeper engagement and comprehension</li>
+                <li>KGE following behavior might signal specific topic interest and likelihood of return visits</li>
+                <li>Audio version usage could indicate users seeking efficiency or alternative consumption methods</li>
+                <li>External link exploration may suggest users wanting deeper understanding of topics</li>
+                <li>Summary style preferences (Bullet Points, Five Ws) might indicate how users prefer to process information</li>
+            </ul>
+
+            <div class="section-title">2. ASSUMED USER BEHAVIORS BASED ON FEATURES</div>
+            <div class="section-description">We're basing our early assumptions on a combination of early Mixpanel analytics, employee usage patterns, feedback from our Slack community, and social listening. Here's what we believe about our user segments:</div>
+            <ul class="features-list">
+                <li><strong>Power Users via AI Interest:</strong> 
+                    <ul>
+                        <li>Experiment with every new AI feature we release</li>
+                        <li>Provide detailed feedback on technical capabilities</li>
+                        <li>Become advocates for the platform's innovation</li>
+                        <li>Help us identify new feature opportunities</li>
+                    </ul>
+                </li>
+                <li><strong>Power & Core Users via News Interest:</strong> 
+                    <ul>
+                        <li>Using multiple formats to deeply understand stories</li>
+                        <li>Regularly engaging with contrasting viewpoints</li>
+                        <li>Valuing both efficiency and depth</li>
+                        <li>Building consistent usage habits</li>
+                    </ul>
+                </li>
+                <li><strong>Core & Casual Users via Feature Exploration:</strong> 
+                    <ul>
+                        <li>Provide clear pathways to understand each feature's value</li>
+                        <li>Demonstrate immediate benefits from basic features</li>
+                        <li>Create obvious progression paths to more advanced features</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="section-title">3. TESTING APPROACH</div>
+            <div class="section-description">We're gathering insights through an interconnected feedback system:</div>
+            <ul class="features-list">
+                <li>Real usage data from early app adoption via Mixpanel analytics</li>
+                <li>Direct feedback from our engaged Slack community</li>
+                <li>Social media engagement patterns and comments</li>
+                <li>Employee usage patterns (as early adopters themselves)</li>
+                <li>Alignment with our core company value proposition</li>
+                <li>Content marketing strategy acting as continuous feedback loop:
+                    <ul>
+                        <li>Content performance informs user preferences</li>
+                        <li>User engagement with different content types validates assumptions</li>
+                        <li>Marketing touchpoint responses help refine audience understanding</li>
+                        <li>Social engagement patterns reveal content format preferences</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+      <!-- Funnel View Tab -->
+        <div id="funnel-view" class="view-content">
             <!-- Top of Funnel -->
             <div class="funnel-section top">
                 <div class="section-title">Top of Funnel</div>
@@ -267,7 +236,8 @@
             </div>
         </div>
 
-        <div id="matrix-view" class="view-content">
+         <!-- Matrix View Tab -->
+        <div id="matrix-view" class="view-content">>
             <table class="matrix-table">
                 <tr>
                     <th></th>
