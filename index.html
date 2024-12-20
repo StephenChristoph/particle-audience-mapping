@@ -2,159 +2,124 @@
 <html>
 <head>
     <title>Who is Particle for? | Particle Audience Mapping</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: #f5f5f5;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            padding: 24px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
+   <style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: #f5f5f5;
+        line-height: 1.6;
+    }
 
-        h1 {
-            color: #1a1a1a;
-            font-size: 24px;
-            margin-bottom: 24px;
-            text-align: center;
-        }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
 
-        .tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 24px;
-            border-bottom: 1px solid #e5e7eb;
-            padding-bottom: 12px;
-        }
+    h1 {
+        color: #1a1a1a;
+        font-size: 24px;
+        margin-bottom: 24px;
+        text-align: center;
+    }
 
-        .tab-button {
-            padding: 8px 16px;
-            border: none;
-            background: none;
-            font-size: 16px;
-            cursor: pointer;
-            color: #6b7280;
-            border-radius: 6px;
-        }
+    .tabs {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 24px;
+        border-bottom: 1px solid #e5e7eb;
+        padding-bottom: 12px;
+    }
 
-        .tab-button.active {
-            background: #e0e7ff;
-            color: #4338ca;
-            font-weight: 500;
-        }
+    .tab-button {
+        padding: 8px 16px;
+        border: none;
+        background: none;
+        font-size: 16px;
+        cursor: pointer;
+        color: #6b7280;
+        border-radius: 6px;
+        transition: all 0.2s;
+    }
 
-        .view-content {
-            display: none;
-        }
+    .tab-button.active {
+        background: #e0e7ff;
+        color: #4338ca;
+        font-weight: 500;
+    }
 
-        .view-content.active {
-            display: block;
-        }
+    .view-content {
+        display: none;
+        padding: 24px; /* Ensure consistent padding */
+    }
 
-        .funnel-section {
-            margin-bottom: 32px;
-            background: linear-gradient(to bottom, #f3f4f6, #e5e7eb);
-            border-radius: 8px;
-            padding: 24px;
-            border: 1px solid #e5e7eb;
-        }
+    .view-content.active {
+        display: block;
+        background: white; /* Ensures white background */
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
 
-        .funnel-section.top { width: 100%; }
-        .funnel-section.middle { width: 90%; margin-left: auto; margin-right: auto; }
-        .funnel-section.bottom { width: 80%; margin-left: auto; margin-right: auto; }
+    .funnel-section,
+    .segments-grid {
+        margin-bottom: 32px;
+    }
 
-        .section-title {
-            color: #1e40af;
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
+    .section-title {
+        color: #1e40af;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 16px;
+    }
 
-        .section-description {
-            color: #4b5563;
-            font-size: 14px;
-            margin-bottom: 16px;
-        }
+    .section-description {
+        color: #4b5563;
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
 
+    .features-list {
+        list-style-type: disc;
+        margin-left: 20px;
+        color: #4b5563;
+        font-size: 14px;
+    }
+
+    .segments-grid {
+        display: flex;
+        flex-wrap: wrap; /* Ensure responsive portrait layout */
+        gap: 16px; /* Consistent spacing */
+    }
+
+    .segment-card {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        flex: 1 1 calc(50% - 16px); /* Enforces two-column portrait layout */
+        box-sizing: border-box;
+    }
+
+    .segment-title {
+        color: #2563eb;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+    @media (max-width: 768px) {
         .segments-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            flex-direction: column; /* Stacks items vertically on smaller screens */
         }
 
         .segment-card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            flex: 1 1 100%; /* Full width for smaller screens */
         }
-
-        .segment-title {
-            color: #2563eb;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .segment-description {
-            color: #4b5563;
-            font-size: 14px;
-            margin-bottom: 12px;
-        }
-
-        .features-list {
-            list-style-type: disc;
-            margin-left: 20px;
-            color: #4b5563;
-            font-size: 14px;
-        }
-
-        .matrix-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .matrix-table th,
-        .matrix-table td {
-            border: 1px solid #e5e7eb;
-            padding: 16px;
-            text-align: left;
-        }
-
-        .matrix-table th {
-            background: #f3f4f6;
-            font-weight: 600;
-            color: #1e40af;
-        }
-
-        .matrix-table td {
-            vertical-align: top;
-        }
-
-        .cell-type {
-            color: #2563eb;
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-
-        .cell-segment {
-            color: #4b5563;
-            font-size: 14px;
-        }
-
-        .cell-features {
-            margin-top: 8px;
-            font-size: 14px;
-            color: #4b5563;
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
     <div class="container">
@@ -510,7 +475,6 @@
     <div class="section-description">
         Each feature interaction gives us clues about user preferences and potential:
     </div>
-
     <div class="segments-grid">
         <div class="segment-card">
             <div class="segment-title">Power User Indicators</div>
@@ -524,7 +488,6 @@
                 <li>Q&A Engagement: We're studying how Q&A usage might indicate product-market fit (similar to how commenting on articles shows deeper engagement with traditional news)</li>
             </ul>
         </div>
-
         <div class="segment-card">
             <div class="segment-title">Core User Patterns</div>
             <div class="segment-description">
@@ -538,7 +501,7 @@
             </ul>
         </div>
     </div>
-</div> 
+</div>
 
     <script>
         function switchView(view) {
