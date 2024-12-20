@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Who is Particle for? | Particle Audience Mapping</title>
-   <style>
+  <style>
     body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         margin: 0;
@@ -30,13 +30,14 @@
     .tabs {
         display: flex;
         gap: 8px;
-        margin-bottom: 24px;
+        margin: 0 auto; /* Ensures tabs stay centered */
+        width: fit-content; /* Prevent tabs from stretching to full width */
+        padding: 0;
         border-bottom: 1px solid #e5e7eb;
-        padding-bottom: 12px;
     }
 
     .tab-button {
-        padding: 8px 16px;
+        padding: 12px 16px; /* Uniform padding for better alignment */
         border: none;
         background: none;
         font-size: 16px;
@@ -54,19 +55,15 @@
 
     .view-content {
         display: none;
-        padding: 24px; /* Ensure consistent padding */
+        padding: 24px; /* Ensure consistent padding across all tabs */
+        margin-top: 16px; /* Creates spacing between tabs and content */
+        background: white; /* Ensures the background is aligned with tabs */
+        border-radius: 12px; /* Matches the container's corner radius */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Consistent shadow for content area */
     }
 
     .view-content.active {
         display: block;
-        background: white; /* Ensures white background */
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    }
-
-    .funnel-section,
-    .segments-grid {
-        margin-bottom: 32px;
     }
 
     .section-title {
@@ -91,8 +88,8 @@
 
     .segments-grid {
         display: flex;
-        flex-wrap: wrap; /* Ensure responsive portrait layout */
-        gap: 16px; /* Consistent spacing */
+        flex-wrap: wrap;
+        gap: 16px;
     }
 
     .segment-card {
@@ -100,23 +97,16 @@
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        flex: 1 1 calc(50% - 16px); /* Enforces two-column portrait layout */
-        box-sizing: border-box;
-    }
-
-    .segment-title {
-        color: #2563eb;
-        font-weight: 600;
-        margin-bottom: 8px;
+        flex: 1 1 calc(50% - 16px); /* Adjust card layout for portrait view */
     }
 
     @media (max-width: 768px) {
         .segments-grid {
-            flex-direction: column; /* Stacks items vertically on smaller screens */
+            flex-direction: column;
         }
 
         .segment-card {
-            flex: 1 1 100%; /* Full width for smaller screens */
+            flex: 1 1 100%;
         }
     }
 </style>
