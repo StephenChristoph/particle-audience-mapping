@@ -103,6 +103,48 @@
             font-size: 14px;
             margin-bottom: 12px;
         }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .matrix-table th,
+        .matrix-table td {
+            border: 1px solid #e5e7eb;
+            padding: 16px;
+            text-align: left;
+        }
+
+        .matrix-table th {
+            background: #f3f4f6;
+            font-weight: 600;
+            color: #1e40af;
+        }
+
+        .matrix-table td {
+            vertical-align: top;
+            background: white;
+        }
+
+        .cell-type {
+            color: #2563eb;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .cell-segment {
+            color: #4b5563;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .cell-features {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #4b5563;
+        }
     </style>
 </head>
 <body>
@@ -159,7 +201,7 @@
         <!-- Matrix View -->
         <div id="matrix-view" class="view-content">
             <div class="section-title">1. USER BEHAVIOR MATRIX</div>
-            <table>
+            <table class="matrix-table">
                 <tr>
                     <th>Segment</th>
                     <th>High Tech Adoption</th>
