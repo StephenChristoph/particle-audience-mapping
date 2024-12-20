@@ -237,9 +237,9 @@
         <div class="tabs">
             <button class="tab-button" onclick="switchView('assumptions-view')">Key Assumptions & Testing</button>
             <button class="tab-button" onclick="switchView('insights-view')">Current Insights & Data</button>
-            <button class="tab-button active" onclick="switchView('funnel')">Funnel View</button>
-            <button class="tab-button" onclick="switchView('matrix')">Matrix View</button>
-            <button class="tab-button" onclick="switchView('social')">Content Marketing & Social Strategy</button>
+            <button class="tab-button" onclick="switchView('funnel-view')">Funnel View</button>
+            <button class="tab-button" onclick="switchView('matrix-view')">Matrix View</button>
+            <button class="tab-button" onclick="switchView('social-view')">Content Marketing & Social Strategy</button>
         </div>
 
         <div id="assumptions-view" class="view-content">
@@ -778,20 +778,28 @@
         </div>
 
     <script>
-        ffunction switchView(view) {
-    // Update buttons
+        function switchView(view) {
+    // Remove the active class from all tab buttons
     document.querySelectorAll('.tab-button').forEach(button => {
         button.classList.remove('active');
     });
 
-    // Add the active class to the button corresponding to the view
-    document.querySelector(`[onclick="switchView('${view}')"]`).classList.add('active');
+    // Find the button corresponding to the clicked tab and add the active class
+    const activeButton = document.querySelector(`[onclick="switchView('${view}')"]`);
+    if (activeButton) {
+        activeButton.classList.add('active');
+    }
 
-    // Update content
+    // Hide all content sections
     document.querySelectorAll('.view-content').forEach(content => {
         content.classList.remove('active');
     });
-    document.getElementById(view + '-view').classList.add('active');
+
+    // Show the selected content section
+    const activeContent = document.getElementById(view);
+    if (activeContent) {
+        activeContent.classList.add('active');
+    }
 }
     </script>
 </body>
