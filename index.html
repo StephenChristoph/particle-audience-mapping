@@ -53,14 +53,15 @@
         font-weight: 500;
     }
 
-    .view-content {
-        display: none;
-        padding: 24px; /* Ensure consistent padding across all tabs */
-        margin-top: 16px; /* Creates spacing between tabs and content */
-        background: white; /* Ensures the background is aligned with tabs */
-        border-radius: 12px; /* Matches the container's corner radius */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Consistent shadow for content area */
-    }
+   .view-content {
+    display: none;
+    padding: 16px; /* Match the padding of .tabs */
+    margin-top: 16px; /* Ensure consistent spacing */
+    background: white;
+    border-radius: 12px; /* Matches the rounded corners of .tabs */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Matches shadow effect of .tabs */
+    border: 1px solid #e5e7eb; /* Matches the border appearance of .tabs */
+}
 
     .view-content.active {
         display: block;
