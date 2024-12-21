@@ -890,6 +890,13 @@
             </div>
         </div>
     </div>
+     <div id="progression-paths-view" class="view-content">
+        <div id="react-progression-paths"></div>
+    </div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    
     <script>
        function switchView(view) {
     // Update buttons
@@ -905,5 +912,18 @@
     document.getElementById(view + '-view').classList.add('active');
 }
     </script>
+    <script type="text/babel">
+        // Import the ProgressionPathsView component
+        import ProgressionPathsView from './ProgressionPathsView.js';
+
+        // Render the React component when the tab is clicked
+        function renderProgressionPaths() {
+            ReactDOM.render(
+                <ProgressionPathsView />,
+                document.getElementById('react-progression-paths')
+            );
+        }
+    </script>
+</div>
 </body>
 </html>
