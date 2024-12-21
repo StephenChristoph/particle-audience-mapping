@@ -892,6 +892,260 @@
     </div>
      <div id="progression-paths-view" class="view-content">
         <div id="react-progression-paths"></div>
+      <div className={`p-4 rounded-lg ${segment.color} mb-6`}>
+    <div className={`${segment.headerColor} text-white p-3 rounded-md mb-4 max-w-md`}>
+      <h2 className="text-lg font-bold mb-1">{segment.title}</h2>
+      <p className="text-xs text-gray-100">{segment.description}</p>
+    </div>
+    
+    <div className="flex items-stretch space-x-2 overflow-x-auto pb-4">
+      {segment.stages.map((stage, index) => (
+        <React.Fragment key={stage.level}>
+          <div className="w-64 flex-shrink-0">
+            <div className="bg-white rounded-lg p-3 shadow-sm h-full">
+              <h3 className="text-base font-semibold text-gray-900 mb-2">
+                {stage.level}
+              </h3>
+              <ul className="space-y-1 mb-3">
+                {stage.behaviors.map((behavior, i) => (
+                  <li key={i} className="text-gray-600 flex items-start text-xs">
+                    <span className="mr-1 text-gray-400">•</span>
+                    <span>{behavior}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="pt-2 border-t border-gray-100">
+                <span className={`text-xs font-medium ${segment.accentColor}`}>
+                  Trigger: {stage.trigger}
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          {index < segment.stages.length - 1 && (
+            <div className="flex items-center">
+              <ArrowRightIcon className={segment.arrowColor} size={16} />
+            </div>
+          )}
+        </React.Fragment>
+      ))}
+    </div>
+  </div>
+);
+
+const ProgressionPathsView = () => {
+  const segments = [
+    {
+      title: 'AI Enthusiasts',
+      description: 'Early adopters with high tech literacy, value innovation',
+      color: 'bg-purple-100',
+      headerColor: 'bg-purple-600',
+      accentColor: 'text-purple-600',
+      arrowColor: 'text-purple-400',
+      stages: [
+        {
+          level: 'New User',
+          behaviors: [
+            'Explores AI features',
+            'Tests multiple summary styles',
+            'Early KGE selection'
+          ],
+          trigger: 'Quick feature adoption'
+        },
+        {
+          level: 'Core User',
+          behaviors: [
+            'Uses Opposite Sides regularly',
+            'Explores external sources',
+            'Multiple KGE engagement'
+          ],
+          trigger: 'Technical feature mastery'
+        },
+        {
+          level: 'Power User',
+          behaviors: [
+            'Daily trifecta behaviors',
+            'Technical feedback',
+            'Feature optimization'
+          ],
+          trigger: 'Deep technical engagement'
+        }
+      ]
+    },
+    {
+      title: 'Forward Thinking News Consumers',
+      description: 'Value multiple perspectives and technical depth',
+      color: 'bg-blue-100',
+      headerColor: 'bg-blue-600',
+      accentColor: 'text-blue-600',
+      arrowColor: 'text-blue-400',
+      stages: [
+        {
+          level: 'New User',
+          behaviors: [
+            'Topic selection',
+            'Basic story completion',
+            'Political spectrum exploration'
+          ],
+          trigger: 'Content depth focus'
+        },
+        {
+          level: 'Core User',
+          behaviors: [
+            'Multiple perspective reading',
+            'Long-form engagement',
+            'Regular KGE interaction'
+          ],
+          trigger: 'Consistent depth seeking'
+        },
+        {
+          level: 'Power User',
+          behaviors: [
+            'Cross-topic analysis',
+            'Source verification',
+            'Background research'
+          ],
+          trigger: 'Comprehensive understanding'
+        }
+      ]
+    },
+    {
+      title: 'Core News Readers',
+      description: 'Traditional news consumers who value structured, clear information, need education & trust building around new technology',
+      color: 'bg-green-100',
+      headerColor: 'bg-green-600',
+      accentColor: 'text-green-600',
+      arrowColor: 'text-green-400',
+      stages: [
+        {
+          level: 'New User',
+          behaviors: [
+            'Single KGE focus',
+            'Traditional reading patterns',
+            'Summary style testing'
+          ],
+          trigger: 'Basic value recognition'
+        },
+        {
+          level: 'Casual User',
+          behaviors: [
+            'Occasional story completion',
+            'Single style preference',
+            'Limited feature exploration'
+          ],
+          trigger: 'Content quality validation'
+        },
+        {
+          level: 'Core User',
+          behaviors: [
+            'Expanded KGE selection',
+            'Regular reading habits',
+            'Moderate feature adoption'
+          ],
+          trigger: 'Habit formation'
+        },
+        {
+          level: 'Power User',
+          behaviors: [
+            'Content completion focus',
+            'Selective feature use',
+            'Topic mastery'
+          ],
+          trigger: 'Deep content engagement'
+        }
+      ]
+    },
+    {
+      title: 'Tech Curious Consumers',
+      description: 'Late adopters with low to medium tech literacy, need education & trust building around new technology',
+      color: 'bg-orange-100',
+      headerColor: 'bg-orange-600',
+      accentColor: 'text-orange-600',
+      arrowColor: 'text-orange-400',
+      stages: [
+        {
+          level: 'New User',
+          behaviors: [
+            'Cautious feature testing',
+            'Basic summary usage',
+            'Single topic focus'
+          ],
+          trigger: 'Initial comfort building'
+        },
+        {
+          level: 'Casual User',
+          behaviors: [
+            'Sporadic engagement',
+            'Minimal feature use',
+            'Content browsing'
+          ],
+          trigger: 'Feature education acceptance'
+        },
+        {
+          level: 'Core User',
+          behaviors: [
+            'Growing feature comfort',
+            'Expanded topic range',
+            'Regular app returns'
+          ],
+          trigger: 'Confidence building'
+        },
+        {
+          level: 'Power User',
+          behaviors: [
+            'Regular feature adoption',
+            'Multiple KGE engagement',
+            'Moderate sharing'
+          ],
+          trigger: 'Comfort expansion'
+        }
+      ]
+    },
+    {
+      title: 'Cautious Consumers',
+      description: 'Late adopters who are skeptical—potentially with low interest in traditional news consumption as well',
+      color: 'bg-red-100',
+      headerColor: 'bg-red-600',
+      accentColor: 'text-red-600',
+      arrowColor: 'text-red-400',
+      stages: [
+        {
+          level: 'New User',
+          behaviors: [
+            'Single topic focus',
+            'Basic summary reading',
+            'Limited feature testing'
+          ],
+          trigger: 'Initial trust building'
+        },
+        {
+          level: 'Casual User',
+          behaviors: [
+            'Occasional usage',
+            'Minimal engagement',
+            'Preferred topic focus'
+          ],
+          trigger: 'Gradual trust development'
+        },
+        {
+          level: 'Core User',
+          behaviors: [
+            'Consistent single style use',
+            'Focused topic engagement',
+            'Fact checking'
+          ],
+          trigger: 'Trust establishment'
+        }
+      ]
+    }
+  ];
+
+  return (
+    <div className="p-6">
+      {segments.map(segment => (
+        <UserJourneySection key={segment.title} segment={segment} />
+      ))}
+    </div>
     </div>
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
